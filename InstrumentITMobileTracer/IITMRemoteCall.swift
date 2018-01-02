@@ -33,7 +33,7 @@ public class IITMRemoteCall: IITMInvocation {
     
     var httpMethod : String?
     
-    var url : String?
+    var url : String = "nourl"
     
     override init(name: String) {
         super.init(name: name)

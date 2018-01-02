@@ -21,6 +21,18 @@ private let swizzlingDataTask: (URLSession.Type) -> () = { session in
 
 }
 
+private let swizzlingDataTaskUrl: (URLSession.Type) -> () = { session in
+    
+    let originalSelector = #selector((URLSession.dataTask(with:completionHandler:)) as (URLSession) -> (URL, @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask)
+    let swizzledSelector = #selector(session.iitmDataTaskUrl(with:completionHandler:))
+    
+    let originalMethod = class_getInstanceMethod(session, originalSelector)
+    let swizzledMethod = class_getInstanceMethod(session, swizzledSelector)
+    
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+    
+}
+
 
 extension URLSession {
     
@@ -28,7 +40,9 @@ extension URLSession {
         // make sure this isn't a subclass
         guard self === URLSession.self else { return }
         swizzlingDataTask(self)
+        swizzlingDataTaskUrl(self)
     }
+    
     
     func iitmDataTask(request: URLRequest, completionHandler: ((Data?, URLResponse?, Error?) -> Void)? = nil) -> URLSessionDataTask {
         
@@ -66,6 +80,42 @@ extension URLSession {
         return dataTask
     }
     
+    func iitmDataTaskUrl(with url: URL, completionHandler: ((Data?, URLResponse?, Error?) -> Void)? = nil) -> URLSessionDataTask {
+        
+        var req = NSMutableURLRequest()
+        req.url = url
+        
+        // Ignore instrumentation point in the case of requesting the monitoring server
+        var remotecall: IITMRemoteCall? = nil
+        if req.url?.absoluteString != IITMAgentConstants.HOST {
+            remotecall = IITMAgent.getInstance().trackRemoteCall(url: (req.url?.absoluteString)!)
+        }
+        if remotecall != nil {
+            IITMAgent.getInstance().injectHeaderAttributes(remotecall: remotecall!, request: &req)
+        }
+        let dataTask = iitmDataTaskUrl(with: url, completionHandler: {data, response, error -> Void in
+            
+            // Ignore instrumentation point in the case of requesting the monitoring server
+            var invocation: IITMInvocation? = nil
+            if remotecall != nil || req.url?.absoluteString != IITMAgentConstants.HOST {
+                IITMAgent.getInstance().closeRemoteCall(remotecall: remotecall!, response: response, error: error)
+            }
+            
+            if completionHandler != nil {
+                if req.url?.absoluteString != IITMAgentConstants.HOST {
+                    invocation = IITMAgent.getInstance().trackInvocation()
+                    // FOLLOWS FROM !!!
+                }
+                
+                completionHandler!(data, response, error)
+                
+                if req.url?.absoluteString != IITMAgentConstants.HOST {
+                    IITMAgent.getInstance().closeInvocation(invocation: invocation!)
+                }
+            }
+        })
+        return dataTask
+    }
 }
 
 

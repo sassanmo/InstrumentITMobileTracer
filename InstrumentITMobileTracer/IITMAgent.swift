@@ -34,6 +34,8 @@ public class IITMAgent: NSObject {
     
     var dispatchAlways: Bool = true
     
+    var webviewdelegate: IITMUIWebViewDelegate?
+    
     init(properties: [(String, Any)]? = nil) {
         agentProperties = [String: Any]()
         invocationOrganizer = IITMInvocationOrganizer()
@@ -115,6 +117,7 @@ public class IITMAgent: NSObject {
     public func trackRemoteCall(function: String = #function, file: String = #file, url: String) -> IITMRemoteCall? {
         if (self.optOut == false) {
             let remotecall = IITMRemoteCall(name: function, holder: file, url: url)
+            setRemoteCallStartProperties(remotecall: remotecall)
             invocationOrganizer.correlateRemotecall(remotecall: remotecall)
             return remotecall
         } else {
@@ -130,7 +133,7 @@ public class IITMAgent: NSObject {
         }
     }
     
-    private func setRemoteCallStartProperties(remotecall: inout IITMRemoteCall) {
+    private func setRemoteCallStartProperties(remotecall: IITMRemoteCall) {
         remotecall.startPosition = locationHandler?.getUsersPosition()
         remotecall.startSSID = IITMSSIDSniffer.getSSID()
         remotecall.startConnectivity = IITMNetworkReachability.getConnectionInformation().0
@@ -177,6 +180,7 @@ public class IITMAgent: NSObject {
             if invocationSerializer.serializedMeasurements.count != 0 {
                 var invocationBuffer = invocationSerializer.serializedMeasurements
                 invocationSerializer.serializedMeasurements = [String]()
+                
                 for (index, item) in invocationBuffer.enumerated() {
                     restManager.httpPostRequest(path: IITMAgentConstants.HOST, body: item, completion: { error -> Void in
                         if error {
@@ -187,6 +191,7 @@ public class IITMAgent: NSObject {
                         }
                     })
                 }
+               
                 
             }
         }
@@ -205,6 +210,11 @@ public class IITMAgent: NSObject {
     
     func generateAgentId() -> UInt64 {
         return calculateUuid()
+    }
+    
+    public func registerWebView(webview: UIWebView) {
+        webviewdelegate = IITMUIWebViewDelegate()
+        webview.delegate = webviewdelegate
     }
     
 }

@@ -20,14 +20,14 @@ class IITMRestManager: NSObject {
         let request = NSMutableURLRequest(url: URL(string: path)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let validatedJSON = validateJSON(json:body);
-        if (validatedJSON != IITMAgentConstants.INVALID) {
-            request.httpBody = validatedJSON;
-            performRequest(request: request, completion: completion);
-        } else {
-            print("JSON data is invalid, post Request aborted!");
-            completion(true);
-        }
+        //let validatedJSON = validateJSON(json:body);
+        //if (validatedJSON != IITMAgentConstants.INVALID) {
+        request.httpBody = body.data(using: .utf8)!
+        performRequest(request: request, completion: completion)
+        //} else {
+         //   print("JSON data is invalid, post Request aborted!");
+         //   completion(true);
+        //}
     }
     
     /// Performs the HTTP request with the pre set up NSMutableURLRequest.

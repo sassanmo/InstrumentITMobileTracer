@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 private let swizzlingLoadRequestMethod: (UIWebView.Type) -> () = { webview in
     
     let originalSelector = #selector(webview.loadRequest(_:))
@@ -85,7 +86,7 @@ extension UIWebView {
     
     open override class func initialize() {
         // make sure this isn't a subclass
-        guard self === URLSession.self else { return }
+        guard self === UIWebView.self else { return }
         swizzlingLoadRequestMethod(self)
         swizzlingLoadHTMLMethod(self)
         swizzlingReloadMethod(self)
@@ -93,6 +94,7 @@ extension UIWebView {
         swizzlingGoForwardMethod(self)
         swizzlingGoBackMethod(self)
     }
+    
     
     func iitmLoadRequest(_ request: URLRequest) {
         let invocation = IITMAgent.getInstance().trackInvocation()

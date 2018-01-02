@@ -23,7 +23,7 @@
 		2106C55B1F8E456A009F330B /* IITMRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C54E1F8E456A009F330B /* IITMRestManager.swift */; };
 		2106C55C1F8E456A009F330B /* IITMSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C54F1F8E456A009F330B /* IITMSpan.swift */; };
 		2106C55D1F8E456A009F330B /* IITMUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C5501F8E456A009F330B /* IITMUtil.swift */; };
-		2106C5611F8E4578009F330B /* IITMUIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C55F1F8E4578009F330B /* IITMUIWebView.swift */; };
+		2106C5611F8E4578009F330B /* IITMUIWebViewInstrumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C55F1F8E4578009F330B /* IITMUIWebViewInstrumentation.swift */; };
 		2106C5621F8E4578009F330B /* IITMURLSessionInvocationInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C5601F8E4578009F330B /* IITMURLSessionInvocationInjection.swift */; };
 		2106C56B1F8E4586009F330B /* IITMBatteryLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C5641F8E4586009F330B /* IITMBatteryLevel.swift */; };
 		2106C56C1F8E4586009F330B /* IITMDiskMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C5651F8E4586009F330B /* IITMDiskMetric.swift */; };
@@ -33,6 +33,8 @@
 		2106C5701F8E4586009F330B /* IITMNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C5691F8E4586009F330B /* IITMNetworkReachability.swift */; };
 		2106C5711F8E4586009F330B /* IITMSSIDSniffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C56A1F8E4586009F330B /* IITMSSIDSniffer.swift */; };
 		2106C5931F8E4F9C009F330B /* IITMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106C5921F8E4F9C009F330B /* IITMAppDelegate.swift */; };
+		212971081FB0E33E00745898 /* IITMUIWebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212971071FB0E33E00745898 /* IITMUIWebViewDelegate.swift */; };
+		21F7BC7A1FB0C10A00B2DFC4 /* IITMURLRequestInstrumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7BC791FB0C10A00B2DFC4 /* IITMURLRequestInstrumentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,7 @@
 		2106C54E1F8E456A009F330B /* IITMRestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMRestManager.swift; sourceTree = "<group>"; };
 		2106C54F1F8E456A009F330B /* IITMSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMSpan.swift; sourceTree = "<group>"; };
 		2106C5501F8E456A009F330B /* IITMUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMUtil.swift; sourceTree = "<group>"; };
-		2106C55F1F8E4578009F330B /* IITMUIWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMUIWebView.swift; sourceTree = "<group>"; };
+		2106C55F1F8E4578009F330B /* IITMUIWebViewInstrumentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMUIWebViewInstrumentation.swift; sourceTree = "<group>"; };
 		2106C5601F8E4578009F330B /* IITMURLSessionInvocationInjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMURLSessionInvocationInjection.swift; sourceTree = "<group>"; };
 		2106C5641F8E4586009F330B /* IITMBatteryLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMBatteryLevel.swift; sourceTree = "<group>"; };
 		2106C5651F8E4586009F330B /* IITMDiskMetric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMDiskMetric.swift; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 		2106C5691F8E4586009F330B /* IITMNetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMNetworkReachability.swift; sourceTree = "<group>"; };
 		2106C56A1F8E4586009F330B /* IITMSSIDSniffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMSSIDSniffer.swift; sourceTree = "<group>"; };
 		2106C5921F8E4F9C009F330B /* IITMAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IITMAppDelegate.swift; sourceTree = "<group>"; };
+		212971071FB0E33E00745898 /* IITMUIWebViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IITMUIWebViewDelegate.swift; sourceTree = "<group>"; };
+		21F7BC791FB0C10A00B2DFC4 /* IITMURLRequestInstrumentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IITMURLRequestInstrumentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +155,10 @@
 		2106C55E1F8E4578009F330B /* Systemlib Instrumentation */ = {
 			isa = PBXGroup;
 			children = (
-				2106C55F1F8E4578009F330B /* IITMUIWebView.swift */,
+				2106C55F1F8E4578009F330B /* IITMUIWebViewInstrumentation.swift */,
 				2106C5601F8E4578009F330B /* IITMURLSessionInvocationInjection.swift */,
+				21F7BC791FB0C10A00B2DFC4 /* IITMURLRequestInstrumentation.swift */,
+				212971071FB0E33E00745898 /* IITMUIWebViewDelegate.swift */,
 			);
 			path = "Systemlib Instrumentation";
 			sourceTree = SOURCE_ROOT;
@@ -286,7 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2106C5931F8E4F9C009F330B /* IITMAppDelegate.swift in Sources */,
-				2106C5611F8E4578009F330B /* IITMUIWebView.swift in Sources */,
+				2106C5611F8E4578009F330B /* IITMUIWebViewInstrumentation.swift in Sources */,
 				2106C55A1F8E456A009F330B /* IITMRemoteMessageUtil.swift in Sources */,
 				2106C56C1F8E4586009F330B /* IITMDiskMetric.swift in Sources */,
 				2106C55B1F8E456A009F330B /* IITMRestManager.swift in Sources */,
@@ -296,11 +302,13 @@
 				2106C5591F8E456A009F330B /* IITMRemoteCall.swift in Sources */,
 				2106C5711F8E4586009F330B /* IITMSSIDSniffer.swift in Sources */,
 				2106C5551F8E456A009F330B /* IITMInvocationOrganizer.swift in Sources */,
+				212971081FB0E33E00745898 /* IITMUIWebViewDelegate.swift in Sources */,
 				2106C56B1F8E4586009F330B /* IITMBatteryLevel.swift in Sources */,
 				2106C5561F8E456A009F330B /* IITMInvocationSerializer.swift in Sources */,
 				2106C56E1F8E4586009F330B /* IITMNativeRessources.c in Sources */,
 				2106C5571F8E456A009F330B /* IITMMessageUtil.swift in Sources */,
 				2106C5581F8E456A009F330B /* IITMMetricsController.swift in Sources */,
+				21F7BC7A1FB0C10A00B2DFC4 /* IITMURLRequestInstrumentation.swift in Sources */,
 				2106C5521F8E456A009F330B /* IITMAgentConstants.swift in Sources */,
 				2106C5531F8E456A009F330B /* IITMDataStorage.swift in Sources */,
 				2106C55C1F8E456A009F330B /* IITMSpan.swift in Sources */,
@@ -377,6 +385,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -423,6 +432,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
